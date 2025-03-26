@@ -50,7 +50,9 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+          ? theme === "dark"
+            ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+            : "bg-white/80 backdrop-blur-md border-b border-black/10"
           : "bg-transparent"
       )}
     >
@@ -61,7 +63,12 @@ export default function Navbar() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">D</span>
             </div>
-            <span className="font-bold text-white hidden sm:inline-block">
+            <span
+              className={cn(
+                "font-bold hidden sm:inline-block",
+                theme === "dark" ? "text-white" : "text-gray-900"
+              )}
+            >
               DualView
             </span>
           </Link>
@@ -70,19 +77,34 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="text-gray-300 hover:text-white transition-colors"
+              className={cn(
+                "transition-colors",
+                theme === "dark"
+                  ? "text-gray-300 hover:text-white"
+                  : "text-gray-700 hover:text-black"
+              )}
             >
               Home
             </Link>
             <Link
               href="/features"
-              className="text-gray-300 hover:text-white transition-colors"
+              className={cn(
+                "transition-colors",
+                theme === "dark"
+                  ? "text-gray-300 hover:text-white"
+                  : "text-gray-700 hover:text-black"
+              )}
             >
               Features
             </Link>
             <Link
               href="/about"
-              className="text-gray-300 hover:text-white transition-colors"
+              className={cn(
+                "transition-colors",
+                theme === "dark"
+                  ? "text-gray-300 hover:text-white"
+                  : "text-gray-700 hover:text-black"
+              )}
             >
               About
             </Link>
@@ -93,7 +115,12 @@ export default function Navbar() {
             {/* Dark/Light mode toggle */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full bg-gray-800 text-gray-200 hover:bg-gray-700 transition-colors"
+              className={cn(
+                "p-2 rounded-full transition-colors",
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200 hover:bg-gray-700"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+              )}
               aria-label="Toggle theme"
             >
               {mounted && theme === "dark" ? (
@@ -106,7 +133,12 @@ export default function Navbar() {
             {/* Share button */}
             <button
               onClick={handleShare}
-              className="p-2 rounded-full bg-gray-800 text-gray-200 hover:bg-gray-700 transition-colors"
+              className={cn(
+                "p-2 rounded-full transition-colors",
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200 hover:bg-gray-700"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+              )}
               aria-label="Share"
             >
               <Share2 size={18} />
@@ -115,7 +147,12 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-full bg-gray-800 text-gray-200 hover:bg-gray-700 transition-colors md:hidden"
+              className={cn(
+                "p-2 rounded-full transition-colors md:hidden",
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200 hover:bg-gray-700"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+              )}
               aria-label="Menu"
             >
               {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -126,26 +163,48 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800">
+        <div
+          className={cn(
+            "md:hidden border-t",
+            theme === "dark"
+              ? "bg-gray-900 border-gray-800"
+              : "bg-gray-100 border-gray-200"
+          )}
+        >
           <div className="container mx-auto px-4 py-3">
             <nav className="flex flex-col space-y-3">
               <Link
                 href="/"
-                className="text-gray-300 hover:text-white transition-colors py-2"
+                className={cn(
+                  "transition-colors py-2",
+                  theme === "dark"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-700 hover:text-black"
+                )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/features"
-                className="text-gray-300 hover:text-white transition-colors py-2"
+                className={cn(
+                  "transition-colors py-2",
+                  theme === "dark"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-700 hover:text-black"
+                )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </Link>
               <Link
                 href="/about"
-                className="text-gray-300 hover:text-white transition-colors py-2"
+                className={cn(
+                  "transition-colors py-2",
+                  theme === "dark"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-700 hover:text-black"
+                )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
