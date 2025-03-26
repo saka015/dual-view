@@ -156,7 +156,7 @@ export const analyzeTypography = async (
 
       // Select 2-4 random fonts
       const fontCount = 2 + Math.floor(Math.random() * 3);
-      const fonts = [];
+      const fonts: string[] = [];
       for (let i = 0; i < fontCount; i++) {
         const randomFont =
           commonFonts[Math.floor(Math.random() * commonFonts.length)];
