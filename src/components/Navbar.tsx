@@ -45,6 +45,15 @@ export default function Navbar() {
     }
   };
 
+  // Add the scoring page to the navigation items
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Features", href: "/features" },
+    { name: "Compare", href: "/compare" },
+    { name: "Score", href: "/score" },
+    { name: "About", href: "/about" },
+  ];
+
   return (
     <header
       className={cn(
@@ -75,39 +84,20 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/"
-              className={cn(
-                "transition-colors",
-                theme === "dark"
-                  ? "text-gray-300 hover:text-white"
-                  : "text-gray-700 hover:text-black"
-              )}
-            >
-              Home
-            </Link>
-            <Link
-              href="/features"
-              className={cn(
-                "transition-colors",
-                theme === "dark"
-                  ? "text-gray-300 hover:text-white"
-                  : "text-gray-700 hover:text-black"
-              )}
-            >
-              Features
-            </Link>
-            <Link
-              href="/about"
-              className={cn(
-                "transition-colors",
-                theme === "dark"
-                  ? "text-gray-300 hover:text-white"
-                  : "text-gray-700 hover:text-black"
-              )}
-            >
-              About
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "transition-colors",
+                  theme === "dark"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-700 hover:text-black"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
           {/* Action Buttons */}
@@ -173,42 +163,21 @@ export default function Navbar() {
         >
           <div className="container mx-auto px-4 py-3">
             <nav className="flex flex-col space-y-3">
-              <Link
-                href="/"
-                className={cn(
-                  "transition-colors py-2",
-                  theme === "dark"
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-700 hover:text-black"
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/features"
-                className={cn(
-                  "transition-colors py-2",
-                  theme === "dark"
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-700 hover:text-black"
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Features
-              </Link>
-              <Link
-                href="/about"
-                className={cn(
-                  "transition-colors py-2",
-                  theme === "dark"
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-700 hover:text-black"
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "transition-colors py-2",
+                    theme === "dark"
+                      ? "text-gray-300 hover:text-white"
+                      : "text-gray-700 hover:text-black"
+                  )}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </nav>
           </div>
         </div>
