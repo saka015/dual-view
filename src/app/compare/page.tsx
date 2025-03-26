@@ -1,9 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
-import { ArrowLeft, Maximize, RefreshCw } from "lucide-react";
-import Link from "next/link";
+import { Suspense } from "react";
 import CompareContent from "./CompareContent";
 
 export default function ComparePage() {
@@ -16,7 +13,7 @@ export default function ComparePage() {
 
 function ComparePageLoading() {
   return (
-    <div className="min-h-screen bg-gray-900 dark:bg-gray-900 text-white flex flex-col">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       <header className="bg-black/30 backdrop-blur-sm border-b border-white/10 p-4 mt-16">
         <div className="container mx-auto flex justify-between items-center">
           <div className="h-6 w-32 bg-gray-800 rounded animate-pulse"></div>
