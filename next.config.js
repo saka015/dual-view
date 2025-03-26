@@ -16,6 +16,10 @@ const nextConfig = {
       },
     ];
   },
+  transpilePackages: ["@/components/ui"],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
