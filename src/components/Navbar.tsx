@@ -59,10 +59,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
+              <span className="text-white font-bold text-lg">D</span>
             </div>
             <span className="font-bold text-white hidden sm:inline-block">
-              CompareView
+              DualView
             </span>
           </Link>
 

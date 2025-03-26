@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CompareView - Website Comparison Tool",
+  title: "DualView - Website Comparison Tool",
   description:
     "Compare websites side by side with our powerful comparison tool",
 };
